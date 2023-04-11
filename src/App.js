@@ -29,9 +29,9 @@ const App = () => {
 
   const [expenses, setExpenses]= useState(EXPENSES)
 
-  const AddExpensesHandler=(item)=>{
-    setExpenses((prevState) => {
-      return [item,...prevState];
+  const addExpensesHandler=(expense)=>{
+    setExpenses((prevExpense) => {
+      return [expense,...prevExpense];
     });
   };
   // return React.createElement(
@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense onAddExpense={AddExpensesHandler}/>
+      <NewExpense onAddExpense={addExpensesHandler}/>
        <Expenses items={expenses} />
     </div>
   );
