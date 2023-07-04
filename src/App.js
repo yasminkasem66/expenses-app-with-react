@@ -27,13 +27,16 @@ const EXPENSES = [
 
 const App = () => {
 
-  const [expenses, setExpenses]= useState(EXPENSES)
+  const [expenses, setExpenses] = useState(EXPENSES)
 
-  const addExpensesHandler=(expense)=>{
+  const addExpensesHandler = (expense) => {
     setExpenses((prevExpense) => {
-      return [expense,...prevExpense];
+      return [expense, ...prevExpense];
     });
   };
+
+  // import React, { useState } from 'react';
+  //   But that's why you needed to import React from React in all your component files in the past, because this is the under-the-hood code  which kind of gets created automatically when you use JSX.  Now in more modern project setups, you can omit this React import because the project setup is able to make that transformation without the import being added.  But if you see component function  where this import is there, it is there because, in the past,  you always did need to add it.
   // return React.createElement(
   //   'div',
   //   {},

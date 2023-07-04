@@ -68,3 +68,40 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Section 3
+
+<!--
+JSX syntax
+work with component,
+work with data in React apps,
+-->
+
+what exactly is a component?
+reusable building blocks in your user interface. Components are in the end just a combination of HTML code,CSS code for styling and possibly JavaScript code for some logic.
+help in 1- reusability (DRY) 2-separation of concerns (Function) we just built our own custom HTML Elements
+3-Declarative approach =>you just define these end states, and under which conditions which state should be used ,and then React will do all of the rest under the hood.
+
+JSX=>Indeed, JSX stands for JavaScript XML
+because HTML in the end is XML, you could say
+
+**Note: in Index.html !**
+//  the fact that the index.js file is the first file to be executed
+<!--This index.html file. This is the single HTML file, which is in the end loaded by the browser here. This is basically the only HTML file -->
+ <div id="root"></div>
+ that's the div where we want to attach or inject our React-driven user interface.
+
+**Note: !**
+why we always should wrap the returned function with only one element
+{/_ because in createElement world, you always create one element which then may have more child elements. So that's why we have this one wrapper root JSX element which we always need. _/}
+{/_ And just as HTML elements can have attributes, it turns out that with React, our own custom components can also have attributes. called props
+Props is a super important concept, because it allows you to make your components reusable, and it allows you to pass data from another component to this component._/}
+EX: <NewExpense onAddExpense={addExpensesHandler} />
+
+### Section 4
+
+<!--
+Handling Events
+Updating the UI & working with "State",
+A closer look at Components & State
+-->

@@ -6,6 +6,7 @@ export default function ExpenseItem(props){
   return (
     <li>
     <Card className='expense-item'>
+      {/* Generally, this approach of building a user interface from smaller building blocks is called composition. */}
       <ExpenseDate date={props.date} />
       <div className='expense-item__description'>
         <h2>{props.title}</h2>
