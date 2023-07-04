@@ -87,8 +87,8 @@ because HTML in the end is XML, you could say
 
 **Note: in Index.html !**
 //  the fact that the index.js file is the first file to be executed
-<!--This index.html file. This is the single HTML file, which is in the end loaded by the browser here. This is basically the only HTML file -->
- <div id="root"></div>
+This index.html file. This is the single HTML file, which is in the end loaded by the browser here. This is basically the only HTML file
+`<div id="root"></div>`
  that's the div where we want to attach or inject our React-driven user interface.
 
 **Note: !**
@@ -96,7 +96,7 @@ why we always should wrap the returned function with only one element
 {/_ because in createElement world, you always create one element which then may have more child elements. So that's why we have this one wrapper root JSX element which we always need. _/}
 {/_ And just as HTML elements can have attributes, it turns out that with React, our own custom components can also have attributes. called props
 Props is a super important concept, because it allows you to make your components reusable, and it allows you to pass data from another component to this component._/}
-EX: <NewExpense onAddExpense={addExpensesHandler} />
+EX: `<NewExpense onAddExpense={addExpensesHandler} />`
 
 ### Section 4
 
