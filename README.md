@@ -86,10 +86,10 @@ JSX=>Indeed, JSX stands for JavaScript XML
 because HTML in the end is XML, you could say
 
 **Note: in Index.html !**
-//  the fact that the index.js file is the first file to be executed
+// the fact that the index.js file is the first file to be executed
 This index.html file. This is the single HTML file, which is in the end loaded by the browser here. This is basically the only HTML file
 `<div id="root"></div>`
- that's the div where we want to attach or inject our React-driven user interface.
+that's the div where we want to attach or inject our React-driven user interface.
 
 **Note: !**
 why we always should wrap the returned function with only one element
@@ -98,10 +98,46 @@ why we always should wrap the returned function with only one element
 Props is a super important concept, because it allows you to make your components reusable, and it allows you to pass data from another component to this component._/}
 EX: `<NewExpense onAddExpense={addExpensesHandler} />`
 
-### Section 4
+### Section 5 && 6
 
 <!--
 Handling Events
 Updating the UI & working with "State",
 A closer look at Components & State
 -->
+
+`<ExpensesFilter selected={filteredYear} onChangeFilter={FilterHandler}/> `
+Because if you would add parentheses here, JavaScript would execute this when this line of code is being parsed. And this line of code is being parsed when the JSX code is returned. So it's then not executing clickHandler when the click occurs but when this JSX code is evaluated, and that would be too early. That's why instead we just point at the clickHandler. We just point at the function. We pass a pointer at this function as a value to onClick, and then React basically memorizes this and executes the function for us whenever the click occurs so that it's not executed when this is evaluated but when the click occurs, which is exactly what we want.
+//that you name your functions like this. If they are triggered upon an event, that you end with handler. that you end with handler.
+//So we need a way of telling react that something changed and that a certain component should be re-evaluated and that's where react introduce a special concept called state.
+with useState we basically create a special kind of variable, a variable where changes will lead this component function to be called again.
+`      const [filteredYear, setFilteredYear]=useState('2020')    
+    const FilterHandler =(year)=>{
+      setFilteredYear(year)
+    }`
+Because by calling this function setState, you're telling React that you wanna assign a new value to this state. to this state. And tells React that the component in which this setState was registered with useState should be re-evaluated. And therefore React will go ahead and execute this component function again, and therefore also evaluate this JSX code again. And then it will draw any changes which it's detects compared to the last time it evaluated this onto the screen. this state updating function actually doesn't change the value right away, but instead schedules this state update. So in the very next line thereafter, this new value isn't available yet. That's why we see the old value being logged even though we updated it before logging.that State really is separated on a per component instance basis Without State, our user interface would never change.Without State, But with State and with listening to events, we can make sure that we can react to user input and that such input can result in a visible change on our screen.
+
+`const [enteredTitle, setEnteredTitle] = useState('');
+const titleChangeHandler = (event) => {
+    setEnteredTitle(event.target.value);
+    console.log(enteredTitle)
+  }`
+because by default, whenever you listen to the change event for an input, if you read the value of that input element, it'll always be a string That's why I also initialize all States with a string.
+
+---
+
+`setUserInput({
+   ...userInput,
+   enteredTitle: event.target.value,
+ });
+`
+whenever you update your state and you depend on the previous state, you should not do it like this but you should use an alternative form ,of this state updating function Instead of calling it like this, if you depend on the previous state u should use this approach
+`setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
+    });
+`
+Now why should we do it like this instead of like this?
+In many cases, both will work fine, but keep in mind that Reacts schedules state updates, it doesn't perform them instantly. it doesn't perform them instantly. And therefore, theoretically, if you schedule a lot of state updates at the same time, you could be depending on an outdated or incorrect state snapshot if you use this approach. React will guarantee that the state snapshot it gives you here in this inner function, will always be the latest state snapshot, keeping all scheduled state updates in mind. So this is the safer way to ensure that you always operate on the latest state snapshot.
+
+why key ?
+{/_ without the key what happens when add new item (expense) is that React, renders this new item as the last item in list of div's and updates all items and replace their content such that it again matches the order of the items in my Array. And this is not great. key => telling react where a new item it should be added. So we can store JSX content in the variables, _/}
