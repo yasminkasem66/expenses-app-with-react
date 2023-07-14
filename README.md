@@ -141,3 +141,5 @@ In many cases, both will work fine, but keep in mind that Reacts schedules state
 
 why key ?
 {/_ without the key what happens when add new item (expense) is that React, renders this new item as the last item in list of div's and updates all items and replace their content such that it again matches the order of the items in my Array. And this is not great. key => telling react where a new item it should be added. So we can store JSX content in the variables, _/}
+
+there is a problem called "div soap" we use fragment to solve that

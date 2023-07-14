@@ -58,7 +58,7 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate), //which will parse that date string and converted into a date object.
     };
     // We can create our own event props, if we wanna call it like, and we can expect functions as values and that would allow us to pass a function from a parent component to a child component and then call that function to a child component and then call that function inside of the child component. And when we then call a function, we can of course pass data to that function as a parameter and that's how we can communicate up from child to parent.
