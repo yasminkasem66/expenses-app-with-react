@@ -143,3 +143,9 @@ why key ?
 {/_ without the key what happens when add new item (expense) is that React, renders this new item as the last item in list of div's and updates all items and replace their content such that it again matches the order of the items in my Array. And this is not great. key => telling react where a new item it should be added. So we can store JSX content in the variables, _/}
 
 there is a problem called "div soap" we use fragment to solve that
+
+### state schedule and batching 5 && 6
+
+state update theoretically could be postponed, this is the safe way of ensuring that state changes are processed in order and for every state change where you depend on the previous state, you get the latest state. Otherwise you might just get the latest state when the component function was executed last, which is not necessarily the same state as if the state changes are executed in order.
+
+ Now, I will say you will use useMemo far less often than you use useCallback because memorizing functions is much more useful, and you need that more often than memorizing data. You essentially wanna memorize data if it would be performance-intensive to recalculate something based on it. Otherwise, it might not really be worth it because you always have to keep in mind that if you store data with useMemo, of course, it occupies some memory and, of course, this storing functionality also takes up some performance. So this is not something you wanna use on every value you're using. If you got a scenario like this one here, though, where you wanna sort something, then it might be worth a look because then using useMemo and avoiding unnecessary sorting steps in future component updates, that might be very well worth it. 
