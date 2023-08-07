@@ -144,8 +144,12 @@ why key ?
 
 there is a problem called "div soap" we use fragment to solve that
 
-### state schedule and batching 5 && 6
+### state schedule and batching 
 
 state update theoretically could be postponed, this is the safe way of ensuring that state changes are processed in order and for every state change where you depend on the previous state, you get the latest state. Otherwise you might just get the latest state when the component function was executed last, which is not necessarily the same state as if the state changes are executed in order.
 
  Now, I will say you will use useMemo far less often than you use useCallback because memorizing functions is much more useful, and you need that more often than memorizing data. You essentially wanna memorize data if it would be performance-intensive to recalculate something based on it. Otherwise, it might not really be worth it because you always have to keep in mind that if you store data with useMemo, of course, it occupies some memory and, of course, this storing functionality also takes up some performance. So this is not something you wanna use on every value you're using. If you got a scenario like this one here, though, where you wanna sort something, then it might be worth a look because then using useMemo and avoiding unnecessary sorting steps in future component updates, that might be very well worth it. 
+
+### Handle error conditions
+
+  Axios, on the other hand, this package I mentioned earlier, this third-party library, which you could use for sending requests, would generate and throw a real error for error status codes. Now, since we're not using axios here but the Fetch API, we have to do this on our own and it is easy to do that. I mentioned that the response object, which we get back has this ok field, which basically signals whether the response was successful or not. So we can check if response is not ok, like this, and then generate and throw our own error in that case.
